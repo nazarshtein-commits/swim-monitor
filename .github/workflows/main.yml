@@ -1,6 +1,5 @@
 YAML
 name: Website Availability Monitor
-
 on:
   schedule:
     - cron: '*/15 * * * *'
