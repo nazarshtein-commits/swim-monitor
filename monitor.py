@@ -3,7 +3,7 @@ import requests
 
 # Налаштування діапазону посилань
 START_ID = 2995
-END_ID = 4500
+END_ID = 3500
 
 # Автоматичне створення списку
 SITES_TO_CHECK = [
