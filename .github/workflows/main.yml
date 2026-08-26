@@ -34,3 +34,4 @@ jobs:
           git add online_sites.txt || true
           git commit -m "Update working sites log [skip ci]" || true
           git push || true
+
