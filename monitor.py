@@ -3,7 +3,7 @@ import requests
 
 # Налаштування діапазону посилань
 START_ID = 2995
-END_ID = 4500  # Діапазон перевірки розширено до 1500+ посилань
+END_ID = 4500
 
 # Автоматичне створення списку
 SITES_TO_CHECK = [
@@ -14,6 +14,9 @@ SITES_TO_CHECK = [
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 SUCCESS_FILE = "online_sites.txt"
+
+# Ключова фраза для підтвердження наявності програми
+KEYWORD = "ПРОГРАМА ЗМАГАНЬ"
 
 def send_telegram(message):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
@@ -46,16 +49,16 @@ def check_websites():
         try:
             response = requests.get(url, headers=headers, timeout=10, allow_redirects=True)
             if response.status_code == 200:
-                page_text = response.text.lower()
-                is_stub = any(p in page_text for p in ["domain for sale", "parked domain", "404 not found", "account suspended"])
+                # Шукаємо ключову фразу без урахування регістру (великі/малі літери)
+                page_text = response.text.upper()
                 
-                if not is_stub:
-                    msg = f"🎉 Сайт запрацював!\nURL: {url}\nКод: {response.status_code}"
+                if KEYWORD in page_text:
+                    msg = f"🎉 Знайдено програму змагань!\nURL: {url}\nЗнайдено фразу: \"{KEYWORD}\""
                     print(msg)
                     send_telegram(msg)
                     mark_site_as_working(url)
                 else:
-                    print(f"[{url}] Заглушка (200 OK)")
+                    print(f"[{url}] Сторінка відкривається, але 'ПРОГРАМА ЗМАГАНЬ' ще відсутня")
             else:
                 print(f"[{url}] Код: {response.status_code}")
         except requests.exceptions.RequestException:
