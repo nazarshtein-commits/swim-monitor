@@ -1,4 +1,4 @@
-name: main
+name: learn-github-actions
 
 on:
   schedule:
