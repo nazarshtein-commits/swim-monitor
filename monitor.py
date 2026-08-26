@@ -3,12 +3,12 @@ import requests
 
 # Список URL для перевірки
 SITES_TO_CHECK = [
-  https://swimtime.in.ua/meet/2995/
-   https://swimtime.in.ua/meet/2996/
-https://swimtime.in.ua/meet/2997/
-https://swimtime.in.ua/meet/2998/
-https://swimtime.in.ua/meet/2999/
-https://swimtime.in.ua/meet/3000/
+  "https://swimtime.in.ua/meet/2995/"
+   "https://swimtime.in.ua/meet/2996/"
+"https://swimtime.in.ua/meet/2997/"
+"https://swimtime.in.ua/meet/2998/"
+"https://swimtime.in.ua/meet/2999/"
+"https://swimtime.in.ua/meet/3000/"
 ]
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
