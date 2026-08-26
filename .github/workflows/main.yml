@@ -1,11 +1,10 @@
 YAML
-name:Swim
+name: Website Availability Monitor
 
 on:
   schedule:
-    # Запуск кожні 15 хвилин
     - cron: '*/15 * * * *'
-  workflow_dispatch: # Дозволяє запускати вручну кнопкою
+  workflow_dispatch:
 
 jobs:
   check:
