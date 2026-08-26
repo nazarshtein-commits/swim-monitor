@@ -1,5 +1,5 @@
 YAML
-name: Website Availability Monitor
+name: Swim
 
 on:
   schedule:
