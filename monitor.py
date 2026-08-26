@@ -3,12 +3,13 @@ import requests
 
 # Список URL для перевірки
 SITES_TO_CHECK = [
-  "https://swimtime.in.ua/meet/2995/",
-   "https://swimtime.in.ua/meet/2996/",
-"https://swimtime.in.ua/meet/2997/",
-"https://swimtime.in.ua/meet/2998/",
-"https://swimtime.in.ua/meet/2999/",
-"https://swimtime.in.ua/meet/3000/"
+ # Задаємо початковий та кінцевий номер турніру
+START_ID = 2995
+END_ID = 4500  # Згенерує номери від 2995 до 3300 (включно)
+
+# Автоматично генеруємо список із 300+ посилань
+SITES_TO_CHECK = [
+    f"https://swimtime.in.ua/meet/{i}/" for i in range(START_ID, END_ID + 1)
 ]
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
